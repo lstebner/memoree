@@ -4,7 +4,7 @@ class Memoree
       shuffle: true
       @opts
     )
-    
+
     @container = $ container
     @setup()
     @render()
@@ -30,15 +30,17 @@ class Memoree
       e.stopPropagation() unless propagate
 
   load_deck: ->
-    @words = ["red", "yellow", "orange", "blue"]
+    @words = dictionary_words
 
   render: ->
     @cards = []
-    for word, idx in @words
+    for w, idx in @words
+      word = w[0]
+      match = w[1]
       card = "<div class='card' data-id='#{idx}'><span>#{word}</span></div>"
       @cards.push card
 
-      match = "<div class='card' data-id='#{idx}m'><span>#{word} match</span></div>"
+      match = "<div class='card' data-id='#{idx}m'><span>#{match}</span></div>"
       @cards.push match
 
     cards = if @opts.shuffle then _.shuffle(@cards) else @cards

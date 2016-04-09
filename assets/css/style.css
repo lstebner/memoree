@@ -27,20 +27,24 @@ a:hover {
   left: 100px;
   border: 1px solid #d8d8d8;
   padding: 10px;
+  margin: auto;
+  width: 610px;
 }
 .card_zone .card {
-  border: 1px solid #000;
+  border: 1px solid #555;
   margin: 10px;
   padding: 20px;
   display: inline-block;
   width: 60px;
-  height: 60px;
+  height: 30px;
   text-align: center;
   background-color: #ccc;
   transition: background-color 0.5s;
   -webkit-transition: background-color 0.5s;
   -moz-transition: background-color 0.5s;
   vertical-align: top;
+  border-radius: 3px;
+  font-size: 18px;
 }
 .card_zone .card span {
   visibility: hidden;
@@ -50,6 +54,7 @@ a:hover {
 }
 .card_zone .card.matched {
   background-color: #444;
+  color: #fff;
 }
 .card_zone .card.miss {
   background-color: #f99;
