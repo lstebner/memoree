@@ -2,6 +2,7 @@ class Memoree
   constructor: (container, @opts={}) ->
     @opts = _.extend(
       shuffle: true
+      mode: "echo" #bad name
       @opts
     )
 
@@ -36,7 +37,13 @@ class Memoree
     @cards = []
     for w, idx in @words
       word = w[0]
-      match = w[1]
+      # in echo mode, the same word is shown on two cards to be matched
+      match = if @opts.mode == "echo"
+        w[0]
+      # otherwise, we use a second index for the match card
+      else
+        w[1]
+
       card = "<div class='card' data-id='#{idx}'><span>#{word}</span></div>"
       @cards.push card
 

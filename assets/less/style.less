@@ -54,8 +54,9 @@ a, a:hover {
         }
 
         &.matched {
-            background-color: #444;
-            color: #fff;
+            background-color: #fafafa;
+            color: #ddd;
+            border-color: #fff;
         }
 
         &.miss {
@@ -73,5 +74,12 @@ a, a:hover {
 .complete {
     .card_zone {
         background-color: #9f9;
+
+        .card {
+            &.matched {
+                color: #333;
+                border-color: #333;
+            }
+        }
     }
 }
