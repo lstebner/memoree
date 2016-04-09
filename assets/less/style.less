@@ -1,0 +1,72 @@
+body {
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 10px 0;
+    font-weight: normal;
+}
+
+p {
+    margin: 6px 0;
+}
+
+a, a:hover {
+    text-decoration: none;
+}
+
+.card_zone {
+    @margin: 100px;
+    position: absolute;
+    top: @margin;
+    right: @margin;
+    bottom: @margin;
+    left: @margin;
+    border: 1px solid #d8d8d8;
+    padding: 10px;
+
+    .card {
+        border: 1px solid #000;
+        margin: 10px;
+        padding: 20px;
+        display: inline-block;
+        width: 60px;
+        height: 60px;
+        text-align: center;
+        background-color: #ccc;
+        transition: background-color .5s;
+        -webkit-transition: background-color .5s;
+        -moz-transition: background-color .5s;
+        vertical-align: top;
+
+        span {
+            visibility: hidden;
+        }
+
+        &.uncover {
+            background-color: #fff;
+        }
+
+        &.matched {
+            background-color: #444;
+        }
+
+        &.miss {
+            background-color: #f99;
+        }
+
+        &.uncover, &.matched, &.miss {
+            span {
+                visibility: visible;
+            }
+        }
+    }
+}
+
+.complete {
+    .card_zone {
+        background-color: #9f9;
+    }
+}
