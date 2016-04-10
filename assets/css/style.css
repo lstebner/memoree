@@ -21,22 +21,23 @@ a:hover {
 }
 .card_zone {
   position: absolute;
-  top: 100px;
-  right: 100px;
-  bottom: 100px;
-  left: 100px;
+  top: 80px;
+  right: 80px;
+  bottom: 80px;
+  left: 80px;
   border: 1px solid #d8d8d8;
   padding: 10px;
   margin: auto;
-  width: 610px;
+  border-radius: 4px;
 }
 .card_zone .card {
+  position: relative;
   border: 1px solid #555;
-  margin: 10px;
-  padding: 20px;
+  margin: 0.2%;
+  padding: 1%;
   display: inline-block;
-  width: 60px;
-  height: 30px;
+  width: 14%;
+  height: 16%;
   text-align: center;
   background-color: #ccc;
   transition: background-color 0.5s;
