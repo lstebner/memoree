@@ -1,7 +1,7 @@
 Memoree =
   init: ->
-    @memoree = new Memoree.Main "#memoree"
     @toolbar = new Memoree.Toolbar "#toolbar"
+    @memoree = new Memoree.Main "#memoree"
 
     $(document.body).on "memoree:request", (e, evnt) =>
       @request evnt
@@ -29,6 +29,10 @@ class Memoree.Main
   setup: ->
     @uncovered_cards = 0
     @matched_cards = 0
+    @stats =
+      clicks: 0
+      matched: 0
+      remaining: 0
     @card_zone = @container.find ".card_zone"
     @load_deck()
     @setup_events()
@@ -48,6 +52,11 @@ class Memoree.Main
 
   load_deck: ->
     @words = dictionary_words
+    @stats.remaining = @words.length
+    @stats_updated()
+
+  stats_updated: ->
+    @container.trigger "memoree:stats:update", @stats
 
   render: ->
     @cards = []
@@ -88,6 +97,8 @@ class Memoree.Main
 
   uncover: ($card) ->
     $card.addClass "uncover"
+    @stats.clicks++
+    @stats_updated()
     @uncovered_cards++
 
   check_uncovered_cards: ->
@@ -100,7 +111,10 @@ class Memoree.Main
     matched = @is_match ids[0], ids[1]
     new_classes = if matched
       @matched_cards++
-      "matched"
+      @stats.matched++
+      @stats.remaining--
+      @stats_updated()
+      "match"
     else
       setTimeout =>
         @container.find(".miss").removeClass("miss")
@@ -134,7 +148,6 @@ class Memoree.Toolbar
     @setup()
 
   setup: ->
-
     @setup_events()
 
   setup_events: ->
@@ -151,6 +164,14 @@ class Memoree.Toolbar
       e.preventDefault() if prevent
       e.stopPropagation() unless propagate
 
+    $(document.body).on "memoree:stats:update", (e, @stats) =>
+      @render_stats()
+
+  render_stats: ->
+    $stats = @container.find(".stats").html("")
+    content = "clicks: #{@stats.clicks}  matched: #{@stats.matched}  remaining: #{@stats.remaining}"
+    $stats.text content
+    console.log @stats
 
 $ ->
   document.Memoree = Memoree

@@ -95,7 +95,7 @@ a:hover {
 .card_zone .card.uncover {
   background-color: #fff;
 }
-.card_zone .card.matched {
+.card_zone .card.match {
   background-color: #fafafa;
   color: #ddd;
   border-color: #fff;
@@ -104,14 +104,14 @@ a:hover {
   background-color: #f99;
 }
 .card_zone .card.uncover span,
-.card_zone .card.matched span,
+.card_zone .card.match span,
 .card_zone .card.miss span {
   visibility: visible;
 }
 .complete .card_zone {
   background-color: #9f9;
 }
-.complete .card_zone .card.matched {
+.complete .card_zone .card.match {
   color: #333;
   border-color: #333;
 }
@@ -126,4 +126,10 @@ a:hover {
 }
 #toolbar .reset_btn {
   float: right;
+}
+#toolbar .stats {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 100;
+  margin-top: 8px;
 }

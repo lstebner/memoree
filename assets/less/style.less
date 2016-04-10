@@ -84,7 +84,7 @@ a, a:hover {
             background-color: #fff;
         }
 
-        &.matched {
+        &.match {
             background-color: #fafafa;
             color: #ddd;
             border-color: #fff;
@@ -94,7 +94,7 @@ a, a:hover {
             background-color: #f99;
         }
 
-        &.uncover, &.matched, &.miss {
+        &.uncover, &.match, &.miss {
             span {
                 visibility: visible;
             }
@@ -107,7 +107,7 @@ a, a:hover {
         background-color: #9f9;
 
         .card {
-            &.matched {
+            &.match {
                 color: #333;
                 border-color: #333;
             }
@@ -126,5 +126,12 @@ a, a:hover {
 
     .reset_btn {
         float: right;
+    }
+
+    .stats {
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 100;
+        margin-top: 8px;
     }
 }
