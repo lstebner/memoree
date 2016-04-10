@@ -2,6 +2,7 @@ body {
     font-size: 14px;
     margin: 0;
     padding: 0;
+    font-family: sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -15,6 +16,35 @@ p {
 
 a, a:hover {
     text-decoration: none;
+}
+
+.btn {
+    display: inline-block;
+    text-align: center;
+    font-weight: 400;
+    text-decoration: none;
+    background-color: #b0c3e3;
+    color: #fff;
+    padding: 8px 30px;
+    margin: 0;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color .3s;
+    -webkit-transition: background-color .3s;
+    -moz-transition: background-color .3s;
+
+    &:hover {
+        background-color: darken(#b0c3e3, 20%);
+        color: #fff;
+    }
+}
+
+.outline_btn {
+    .btn;
+
+    background-color: #fff;
+    border: 1px solid #b0c3e3;
+    color: darken(#b0c3e3, 20%);
 }
 
 .card_zone {
@@ -82,5 +112,19 @@ a, a:hover {
                 border-color: #333;
             }
         }
+    }
+}
+
+#toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    padding: 20px 80px;
+    box-sizing: border-box;
+
+    .reset_btn {
+        float: right;
     }
 }

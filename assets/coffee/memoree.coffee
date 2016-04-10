@@ -1,4 +1,17 @@
-class Memoree
+Memoree =
+  init: ->
+    @memoree = new Memoree.Main "#memoree"
+    @toolbar = new Memoree.Toolbar "#toolbar"
+
+  # expose allowed memoree events
+  request: (evnt) ->
+    unless _.indexOf(["reset"], evnt) > -1
+      return console.log("requested action is not available") 
+
+    switch evnt
+      when "reset" then @memoree.reset()
+
+class Memoree.Main
   constructor: (container, @opts={}) ->
     @opts = _.extend(
       shuffle: true
@@ -111,8 +124,34 @@ class Memoree
     @render()
 
 
+# TODO: organize into separate file
+class Memoree.Toolbar
+  constructor: (container, @opts={}) ->
+    @container = $ container
+    @setup()
+
+  setup: ->
+
+    @setup_events()
+
+  setup_events: ->
+    @container.on "click", (e) =>
+      prevent = true
+      propagate = true
+      $target = $(e.target)
+      $currentTarget = $(e.currentTarget)
+
+      if $target.is ".reset_btn"
+        if confirm "Are you sure?"
+          document.Memoree.request("reset")
+
+      e.preventDefault() if prevent
+      e.stopPropagation() unless propagate
+
+
 $ ->
-  document.memoree = new Memoree "#memoree"
+  document.Memoree = Memoree
+  document.Memoree.init()
 
 
 
