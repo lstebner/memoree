@@ -88,20 +88,24 @@ a:hover {
   vertical-align: top;
   border-radius: 3px;
   font-size: 18px;
+  background-image: url(../images/sayagata-400px.png);
 }
 .card_zone .card span {
   visibility: hidden;
 }
 .card_zone .card.uncover {
   background-color: #fff;
+  background-image: none;
 }
 .card_zone .card.match {
   background-color: #fafafa;
   color: #ddd;
   border-color: #fff;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 .card_zone .card.miss {
   background-color: #f99;
+  background-image: none;
 }
 .card_zone .card.uncover span,
 .card_zone .card.match span,

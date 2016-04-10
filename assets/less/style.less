@@ -75,6 +75,7 @@ a, a:hover {
         vertical-align: top;
         border-radius: 3px;
         font-size: 18px;
+        background-image: url(../images/sayagata-400px.png);
 
         span {
             visibility: hidden;
@@ -82,16 +83,19 @@ a, a:hover {
 
         &.uncover {
             background-color: #fff;
+            background-image: none;
         }
 
         &.match {
             background-color: #fafafa;
             color: #ddd;
             border-color: #fff;
+            background-color: rgba(255, 255, 255, .5);
         }
 
         &.miss {
             background-color: #f99;
+            background-image: none;
         }
 
         &.uncover, &.match, &.miss {
