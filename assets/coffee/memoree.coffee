@@ -3,6 +3,9 @@ Memoree =
     @memoree = new Memoree.Main "#memoree"
     @toolbar = new Memoree.Toolbar "#toolbar"
 
+    $(document.body).on "memoree:request", (e, evnt) =>
+      @request evnt
+
   # expose allowed memoree events
   request: (evnt) ->
     unless _.indexOf(["reset"], evnt) > -1
@@ -143,7 +146,7 @@ class Memoree.Toolbar
 
       if $target.is ".reset_btn"
         if confirm "Are you sure?"
-          document.Memoree.request("reset")
+          @container.trigger "memoree:request", "reset"
 
       e.preventDefault() if prevent
       e.stopPropagation() unless propagate
