@@ -19,10 +19,12 @@ class Memoree.Main
     @opts = _.extend(
       shuffle: true
       mode: "echo" #bad name
+      theme: "alt"
       @opts
     )
 
     @container = $ container
+    @container.addClass @opts.theme
     @setup()
     @render()
 

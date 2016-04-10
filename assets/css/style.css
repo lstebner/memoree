@@ -92,6 +92,11 @@ a:hover {
 }
 .card_zone .card span {
   visibility: hidden;
+  position: relative;
+  top: 50%;
+  display: block;
+  line-height: 1.5em;
+  margin-top: -0.75em;
 }
 .card_zone .card.uncover {
   background-color: #fff;
@@ -111,6 +116,9 @@ a:hover {
 .card_zone .card.match span,
 .card_zone .card.miss span {
   visibility: visible;
+}
+#memoree.alt .card_zone .card:not(.miss):not(.match):not(.uncover) {
+  background-image: url(../images/asanoha-400px.png);
 }
 .complete .card_zone {
   background-color: #9f9;

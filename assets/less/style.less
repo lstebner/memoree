@@ -79,6 +79,11 @@ a, a:hover {
 
         span {
             visibility: hidden;
+            position: relative;
+            top: 50%;
+            display: block;
+            line-height: 1.5em;
+            margin-top: -.75em;
         }
 
         &.uncover {
@@ -103,6 +108,12 @@ a, a:hover {
                 visibility: visible;
             }
         }
+    }
+}
+
+#memoree.alt {
+    .card_zone .card:not(.miss):not(.match):not(.uncover) {
+        background-image: url(../images/asanoha-400px.png);
     }
 }
 
