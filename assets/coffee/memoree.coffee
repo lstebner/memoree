@@ -72,7 +72,7 @@ class Memoree.Main
 
   click_card: ($el, e) ->
     # currently waiting to check uncovered cards
-    return if @check_cards_to
+    return if @check_cards_to || !_.isEmpty(_.intersection($el[0].classList, ["match", "miss", "uncover"])) 
 
     if @uncovered_cards < 2
       @uncover $el
