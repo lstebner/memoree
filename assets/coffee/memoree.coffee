@@ -1,3 +1,5 @@
+# @codekit-prepend "dictionary"
+
 Memoree =
   init: ->
     @toolbar = new Memoree.Toolbar "#toolbar"
@@ -20,6 +22,7 @@ class Memoree.Main
       shuffle: true
       mode: "echo" #bad name
       theme: "alt"
+      num_tiles: 30
       @opts
     )
 
@@ -52,8 +55,30 @@ class Memoree.Main
       e.preventDefault() if prevent
       e.stopPropagation() unless propagate
 
+  load_dictionary: (key) ->
+    dict = dictionary_data
+
+    dict_data = switch key
+      when "characters.hiragana"
+        for c in dict.characters.hiragana
+          [c, c]
+
+      when "characters.katana"
+        for c in dict.characters.katana
+          [c, c]
+
+      else
+        if dict[key]?
+          dict[key]
+
+    dict_data
+
   load_deck: ->
-    @words = dictionary_words
+    @words = @load_dictionary "foods"
+
+    if @words.length > @opts.num_tiles / 2
+      @words = _.first _.shuffle(@words), @opts.num_tiles / 2 
+
     @stats.remaining = @words.length
     @stats_updated()
 
@@ -63,10 +88,10 @@ class Memoree.Main
   render: ->
     @cards = []
     for w, idx in @words
-      word = w[0]
+      word = w[1]
       # in echo mode, the same word is shown on two cards to be matched
       match = if @opts.mode == "echo"
-        w[0]
+        word
       # otherwise, we use a second index for the match card
       else
         w[1]
@@ -120,7 +145,7 @@ class Memoree.Main
     else
       setTimeout =>
         @container.find(".miss").removeClass("miss")
-      , 800
+      , 1200
       "miss"
 
     $uncovered.addClass(new_classes).removeClass("uncover")
@@ -140,6 +165,12 @@ class Memoree.Main
     @matched_cards = 0
     @card_zone.html ""
     @container.removeClass("complete")
+    @stats =
+      clicks: 0
+      matched: 0
+      remaining: @words.length
+    @stats_updated()
+    @load_deck()
     @render()
 
 
