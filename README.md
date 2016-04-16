@@ -14,6 +14,22 @@ This is an HTML/JavaScript version of that. It will have some basic modes for pl
 
 I'll write more about this later, but that's all for now. Enjoy!
 
+## Game Ideas
+
+In the future I will include many more games that help improve memory and general brain strength. 
+
+Language Tools: 
+- characters (hiragana/katakana)
+- word translations (QA)
+- dialogue translations
+- dialogue responses
+- question/answer with multiple choice (varying number of choices)
+- times
+
+Brain Tools: 
+- math questions
+
+
 ## Credits
 
 ahhsumx/lstebner 2016 on a casual April Saturday
