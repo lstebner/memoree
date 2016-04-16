@@ -214,10 +214,64 @@ class Memoree.Toolbar
     $stats = @container.find(".stats").html("")
     content = "clicks: #{@stats.clicks}  matched: #{@stats.matched}  remaining: #{@stats.remaining}"
     $stats.text content
-    console.log @stats
+
+class Menu
+  constructor: (container, @opts={}) ->
+    @content = $(container).html()
+    @construct()
+    @setup_events()
+
+  construct: ->
+    @setup_overlay()
+    @container = $("<div class='menu'></div>")
+    $(document.body).append @container
+    @container.html @content
+
+  setup_overlay: ->
+    return @overlay if @overlay
+    @overlay = $("<div class='overlay'></div>")
+    $(document.body).append(@overlay)
+
+  setup_events: ->
+    @container.on "click", (e) =>
+      e.stopPropagation()
+      false
+
+    @overlay.on "click", (e) =>
+      e.stopPropagation()
+      @close()
+
+  close: ->
+    @overlay.hide()
+    @container.hide()
+
+  open: ->
+    @overlay.show()
+    @container.show()
+
+class DictionaryMenu extends Menu
+  constructor: (@opts={}) ->
+    super "#dictionary_menu_template", @opts
+
+  setup_events: ->
+    super
+
+    @container.on "click", "li", (e) =>
+      e.preventDefault()
+      $(e.currentTarget).toggleClass("selected")
+
+    @container.on "click", ".submit_btn", (e) =>
+      e.preventDefault()
+      @apply_dictionary_selections()
+
+  apply_dictionary_selections: ->
+    @close()
+
+
+document.DictionaryMenu = DictionaryMenu
+document.Memoree = Memoree
 
 $ ->
-  document.Memoree = Memoree
   document.Memoree.init()
 
 

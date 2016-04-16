@@ -145,3 +145,106 @@ a:hover {
   font-weight: 100;
   margin-top: 8px;
 }
+.overlay {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.menu_btn {
+  display: block;
+  padding: 8px;
+  margin: 12px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #333;
+  font-size: 14px;
+  text-align: center;
+  transition: background-color 0.5s, color 0.5s;
+  -webkit-transition: background-color 0.5s, color 0.5s;
+  -moz-transition: background-color 0.5s, color 0.5s;
+}
+.menu_btn:hover {
+  background-color: #fafafa;
+  color: #000;
+}
+.menu_btn.selected {
+  background-color: #ddd;
+  color: #555;
+}
+.menu_btn a {
+  color: inherit;
+}
+.menu {
+  position: relative;
+  z-index: 1000;
+  top: 100px;
+  bottom: 100%;
+  margin: auto;
+  max-height: 80%;
+  max-width: 200px;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+.menu h1 {
+  font-size: 18px;
+  text-align: center;
+}
+.menu ul {
+  margin: 0;
+  padding: 0;
+}
+.menu ul li {
+  display: block;
+  padding: 8px;
+  margin: 12px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #333;
+  font-size: 14px;
+  text-align: center;
+  transition: background-color 0.5s, color 0.5s;
+  -webkit-transition: background-color 0.5s, color 0.5s;
+  -moz-transition: background-color 0.5s, color 0.5s;
+}
+.menu ul li:hover {
+  background-color: #fafafa;
+  color: #000;
+}
+.menu ul li.selected {
+  background-color: #ddd;
+  color: #555;
+}
+.menu ul li a {
+  color: inherit;
+}
+.submit_btn {
+  display: block;
+  padding: 8px;
+  margin: 12px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #333;
+  font-size: 14px;
+  text-align: center;
+  transition: background-color 0.5s, color 0.5s;
+  -webkit-transition: background-color 0.5s, color 0.5s;
+  -moz-transition: background-color 0.5s, color 0.5s;
+}
+.submit_btn:hover {
+  background-color: #fafafa;
+  color: #000;
+}
+.submit_btn.selected {
+  background-color: #ddd;
+  color: #555;
+}
+.submit_btn a {
+  color: inherit;
+}
