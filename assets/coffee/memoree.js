@@ -81,36 +81,48 @@
       })(this));
     };
 
-    Main.prototype.load_dictionary = function(key) {
-      var c, dict, dict_data;
-      dict = dictionary_data;
-      dict_data = (function() {
-        var i, j, len, len1, ref, ref1, results, results1;
-        switch (key) {
-          case "characters.hiragana":
-            ref = dict.characters.hiragana;
-            results = [];
-            for (i = 0, len = ref.length; i < len; i++) {
-              c = ref[i];
-              results.push([c, c]);
-            }
-            return results;
-            break;
-          case "characters.katana":
-            ref1 = dict.characters.katana;
-            results1 = [];
-            for (j = 0, len1 = ref1.length; j < len1; j++) {
-              c = ref1[j];
-              results1.push([c, c]);
-            }
-            return results1;
-            break;
-          default:
-            if (dict[key] != null) {
-              return dict[key];
-            }
+    Main.prototype.load_dictionary = function(keys) {
+      var c, dict, dict_data, i, key, len, new_data;
+      if (!_.isArray(keys) && _.isString(keys)) {
+        if (_.isString(keys)) {
+          keys = [keys];
+        } else {
+          return console.log("keys must be a string or array, not a '" + (typeof keys) + "'");
         }
-      })();
+      }
+      dict = dictionary_data;
+      dict_data = [];
+      for (i = 0, len = keys.length; i < len; i++) {
+        key = keys[i];
+        new_data = (function() {
+          var j, k, len1, len2, ref, ref1, results, results1;
+          switch (key) {
+            case "characters.hiragana":
+              ref = dict.characters.hiragana;
+              results = [];
+              for (j = 0, len1 = ref.length; j < len1; j++) {
+                c = ref[j];
+                results.push([c, c]);
+              }
+              return results;
+              break;
+            case "characters.katana":
+              ref1 = dict.characters.katana;
+              results1 = [];
+              for (k = 0, len2 = ref1.length; k < len2; k++) {
+                c = ref1[k];
+                results1.push([c, c]);
+              }
+              return results1;
+              break;
+            default:
+              if (dict[key] != null) {
+                return dict[key];
+              }
+          }
+        })();
+        dict_data = _.union(dict_data, new_data);
+      }
       return dict_data;
     };
 

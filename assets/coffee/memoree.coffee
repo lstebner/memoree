@@ -55,21 +55,31 @@ class Memoree.Main
       e.preventDefault() if prevent
       e.stopPropagation() unless propagate
 
-  load_dictionary: (key) ->
-    dict = dictionary_data
-
-    dict_data = switch key
-      when "characters.hiragana"
-        for c in dict.characters.hiragana
-          [c, c]
-
-      when "characters.katana"
-        for c in dict.characters.katana
-          [c, c]
-
+  load_dictionary: (keys) ->
+    if !_.isArray(keys) && _.isString(keys)
+      if _.isString(keys)
+        keys = [keys]
       else
-        if dict[key]?
-          dict[key]
+        return console.log "keys must be a string or array, not a '#{typeof keys}'"
+
+    dict = dictionary_data
+    dict_data = []
+
+    for key in keys
+      new_data = switch key
+        when "characters.hiragana"
+          for c in dict.characters.hiragana
+            [c, c]
+
+        when "characters.katana"
+          for c in dict.characters.katana
+            [c, c]
+
+        else
+          if dict[key]?
+            dict[key]
+
+      dict_data = _.union dict_data, new_data
 
     dict_data
 
